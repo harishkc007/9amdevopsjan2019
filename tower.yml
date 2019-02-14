@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: True
+  tasks:
+    - name: Install tomcat
+      apt-get:
+        name: tomcat
+        state: present
+    - name: Install Git
+      apt-get:
+        name: git
+        state: present
+    - name: Start tomcat
+      service:
+        name: tomcat
+        state: started
+    - name: Enable tomcat on reboot
+      service:
+        name: tomcat
+        enabled: yes
+        
+ ---
