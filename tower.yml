@@ -1,21 +1,6 @@
----
-- hosts: all
-  become: True
+ ---
+- hosts: apache
+  sudo: yes
   tasks:
-    - name: Install tomcat
-      apt-get:
-        name: tomcat
-        state: present
-    - name: Install Git
-      apt-get:
-        name: git
-        state: present
-    - name: Start tomcat
-      service:
-        name: tomcat
-        state: started
-    - name: Enable tomcat on reboot
-      service:
-        name: tomcat
-        enabled: yes
-        
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest 
